@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <h1>Authors</h1>
+
+    <ul>
+
+        <!--Loops the list we sent from the view-->
+        {% for author in authors %}
+            <!--Shows last and first name-->
+            <li>{{ author.last_name }} {{ author.first_name }}</li>
+        <!--If empty show the below li-->
+        {% empty %}
+            <li>No authors found</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
