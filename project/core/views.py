@@ -1,7 +1,7 @@
 #Recieves an HTML template, it fills it with data and returns a page to the browser
 from django.shortcuts import render
 
-from .models import Author, Book
+from .models import Author, Book, Category
 
 # Create your views here.
 
@@ -16,3 +16,7 @@ def author_list(request):
 def book_list(request):
     books = Book.objects.all()
     return render(request, "core/book_list.html", {"books": books})
+
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, "core/category_list.html", {"categories": categories})
