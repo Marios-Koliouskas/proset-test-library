@@ -11,7 +11,7 @@
 
     <ul>
         {% for category in categories %}
-            <li>Name: {{category.name}} || 
+            <li>Name: <a href="{% url 'category_detail' category.id %}"> {{category.name}} </a>|| 
                 Description: {{category.description}}
             </li>
         {%empty%}

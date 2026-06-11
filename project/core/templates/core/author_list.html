@@ -13,11 +13,17 @@
         <!--Loops the list we sent from the view-->
         {% for author in authors %}
             <!--Shows last and first name-->
-            <li>{{ author.last_name }} {{ author.first_name }}</li>
+            <li>
+
+                <!--Makes dynamic links, so everytime we click an author, we go to a specific details page-->
+                <a href="{% url 'author_detail' author.id %}">
+                    {{ author.last_name }} {{ author.first_name }}
+                </a>
+            </li>
         <!--If empty show the below li-->
         {% empty %}
             <li>No authors found</li>
-        {% endfor %}
+        {% endfor %}    
     </ul>
 </body>
 </html>

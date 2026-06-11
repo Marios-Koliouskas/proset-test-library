@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book details</title>
+</head>
+<body>
+    <h1>Book details</h1>
+
+    <p><strong>ID: </strong>{{book.id}}</p>
+    <p><strong>Title: </strong>{{book.title}}</p>
+    <p><strong>Author:</strong> {{book.author}}</p>
+    <p><strong>Published at: </strong>{{book.pub_date}}</p>
+    <p><strong>Price: </strong>{{book.price}}</p>
+    <p><strong>Is published: </strong>{{book.is_published}}</p>
+    <p><strong>Category: </strong>{{book.category}}</p>
+    <p><strong>Description: </strong>{{book.description}}</p>
+    <p><strong>Created at: </strong>{{book.created_at}}</p>
+    <p><strong>Updated at: </strong>{{book.updated_at}}</p>
+
+    <p><a href="{% url 'book_list'%}">Back to book list</a></p>
+</body>
+</html>
