@@ -9,6 +9,9 @@
     
     <h1>Categories</h1>
 
+    <p>
+        <a href="{% url 'category_create' %}">Create new category</a>
+    </p>
     <ul>
         {% for category in categories %}
             <li>Name: <a href="{% url 'category_detail' category.id %}"> {{category.name}} </a>|| 

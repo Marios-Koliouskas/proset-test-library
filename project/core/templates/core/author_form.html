@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Author</title>
+</head>
+<body>
+    <h1>Create Author</h1>
+
+    <!--When user presses save, send the data to the server with a POST request-->
+    <form method="post">
+
+        <!--Its Django's protection for forms. In every form we type this-->
+        {% csrf_token %}
+
+        <!--Display all form fields as paragraphs-->
+        {{ form.as_p }}
+
+        <button type="submit">Save</button>
+    </form>
+
+    <p>
+        <a href="{% url 'author_list' %}">Back to authors</a>
+    </p>
+</body>
+</html>

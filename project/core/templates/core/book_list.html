@@ -8,6 +8,9 @@
 <body>
 
     <h1>Books</h1>
+    <p>
+        <a href="{% url 'book_create' %}">Create new book</a>
+    </p>
 
     <ul>
         {% for book in books %}
