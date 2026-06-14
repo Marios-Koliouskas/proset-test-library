@@ -50,6 +50,36 @@ def author_create(request):
     # The template will use {{ form.as_p }} to display the form fields.
     return render(request, "core/author_form.html", {"form": form})
 
+def author_update(request, author_id):
+    # Find the author we want to edit, using the id from the URL.
+    # If no author with this id exists, show 404 page.
+    author = get_object_or_404(Author, id=author_id)
+
+    # If the user submitted the form, we receive a POST request.
+    if request.method == "POST":
+
+        # Create a form with the submitted data.
+        # instance=author means:
+        # update this existing author, do not create a new one.
+        form = AuthorForm(request.POST, instance=author)
+
+        # Check if the submitted data is valid.
+        if form.is_valid():
+
+            # Save the changes to the existing author in the database.
+            form.save()
+
+            # After saving, go to the detail page of this author.
+            return redirect("author_detail", author_id=author.id)
+
+    else:
+        # If it is a GET request, the user just opened the edit page.
+        # Create a form filled with the existing author's data.
+        form = AuthorForm(instance=author)
+
+    # Render the same form template and pass the form to the HTML.
+    return render(request, "core/author_form.html", {"form": form})
+
 def book_list(request):
     books = Book.objects.all().order_by("-id")
     return render(request, "core/book_list.html", {"books": books})
@@ -66,6 +96,17 @@ def book_create(request):
             return redirect("book_list")
     else:
         form = BookForm()
+    return render(request, "core/book_form.html", {"form": form})
+
+def book_update(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method == "POST":
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect("book_detail", book_id=book.id)
+    else:
+        form = BookForm(instance=book)
     return render(request, "core/book_form.html", {"form": form})
 
 def category_list(request):
@@ -85,4 +126,16 @@ def category_create(request):
     else:
         form = CategoryForm()
     return render(request, "core/category_form.html", {"form": form})
+
+def category_update(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance = category)
+        if form.is_valid():
+            form.save()
+            return redirect("category_detail", category_id = category.id)
+    else:
+        form = CategoryForm(instance=category)
+    return render(request, "core/category_form.html", {"form": form})
+
 

@@ -16,6 +16,10 @@
     <p><strong>Updated at:</strong> {{author.updated_at}}</p>
 
     <p>
+        <a href="{% url 'author_update' author.id %}">Edit author</a>
+    </p>
+
+    <p>
         <a href="{% url 'author_list' %}">Back to authors</a>
     </p>
 </body>

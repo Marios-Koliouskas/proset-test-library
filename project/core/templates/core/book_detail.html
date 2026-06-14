@@ -19,6 +19,13 @@
     <p><strong>Created at: </strong>{{book.created_at}}</p>
     <p><strong>Updated at: </strong>{{book.updated_at}}</p>
 
-    <p><a href="{% url 'book_list'%}">Back to book list</a></p>
+
+    <p>
+        <a href="{% url 'book_update' book.id%}">Edit book</a>
+    </p>
+    
+    <p>
+        <a href="{% url 'book_list' %}">Back to books</a>
+    </p>
 </body>
 </html>

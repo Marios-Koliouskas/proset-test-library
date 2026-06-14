@@ -15,7 +15,15 @@
     <p><strong>Created at: </strong>{{category.created_at}}</p>
     <p><strong>Updated at: </strong>{{category.updated_at}}</p>
 
-    <p><a href="{% url 'category_list' %}"> Back to category list</a></p>
+    <p>
+        <a href="{% url 'category_update' category.id %}">Edit category
+        </a>
+    </p>
+
+    <p>
+        <a href="{% url 'category_list' %}"> Back to category list
+        </a>
+    </p>
     
 </body>
 </html>
