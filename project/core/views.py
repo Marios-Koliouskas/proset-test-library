@@ -80,6 +80,22 @@ def author_update(request, author_id):
     # Render the same form template and pass the form to the HTML.
     return render(request, "core/author_form.html", {"form": form})
 
+def author_delete(request, author_id):
+    # Find the author we want to delete using the id from the URL.
+    # If the author does not exist, show 404 page.
+    author = get_object_or_404(Author, id=author_id)
+
+    # If the request is POST, it means the user confirmed the deletion.
+    if request.method == "POST":
+        # Delete the author from the database.
+        author.delete()
+
+        # After deleting, redirect back to the authors list.
+        return redirect("author_list")
+
+    # If the request is GET, show the confirmation page.
+    return render(request, "core/author_confirm_delete.html", {"author": author})
+
 def book_list(request):
     books = Book.objects.all().order_by("-id")
     return render(request, "core/book_list.html", {"books": books})
@@ -109,6 +125,14 @@ def book_update(request, book_id):
         form = BookForm(instance=book)
     return render(request, "core/book_form.html", {"form": form})
 
+def book_delete(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    if request.method=="POST":
+        book.delete()
+        return redirect("book_list")
+    else:
+        return render(request, "core/book_confirm_delete.html", {"book": book})
+
 def category_list(request):
     categories = Category.objects.all().order_by("-id")
     return render(request, "core/category_list.html", {"categories": categories})
@@ -137,5 +161,13 @@ def category_update(request, category_id):
     else:
         form = CategoryForm(instance=category)
     return render(request, "core/category_form.html", {"form": form})
+
+def category_delete(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == "POST":
+        category.delete()
+        return redirect("category_list")
+    else:
+        return render(request, "core/category_confirm_delete.html", {"category": category})
 
 

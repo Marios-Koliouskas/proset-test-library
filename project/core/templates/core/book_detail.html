@@ -23,6 +23,10 @@
     <p>
         <a href="{% url 'book_update' book.id%}">Edit book</a>
     </p>
+
+    <p>
+        <a href="{% url 'book_delete' book.id%}">Delete book</a>
+    </p>
     
     <p>
         <a href="{% url 'book_list' %}">Back to books</a>
