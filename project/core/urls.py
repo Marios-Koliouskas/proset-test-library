@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-#When someone visits authors/, execute the author_list view
 urlpatterns = [
     #Define path, execute view function and give the name to this route for easy use(elsewhere)
 

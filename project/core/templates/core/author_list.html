@@ -9,9 +9,9 @@
     
     <ul>
 
-        <!--Loops the list we sent from the view-->
+        
         {% for author in authors %}
-            <!--Shows last and first name-->
+            
             <li>
 
                 <!--Makes dynamic links, so everytime we click an author, we go to a specific details page-->
@@ -19,7 +19,7 @@
                     {{ author.last_name }} {{ author.first_name }}
                 </a>
             </li>
-        <!--If empty show the below li-->
+        
         {% empty %}
             <li>No authors found</li>
         {% endfor %}    

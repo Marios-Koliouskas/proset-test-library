@@ -13,9 +13,9 @@ def home(request):
 #A python function thats being called when someone opens the specific url
 #The request is the request of the user/browser
 def author_list(request):
-    #Bring every author from the database
+    
     authors = Author.objects.all().order_by("-id")
-    #Open the HTML file author_list.html and send the variable authors
+    
     return render(request, "core/author_list.html", {"authors": authors})
     
 def author_detail(request, author_id):
@@ -24,7 +24,6 @@ def author_detail(request, author_id):
     return render(request, "core/author_detail.html", {"author": author})
 
 def author_create(request):
-    # This view handles the creation of a new Author.
 
     # If the request method is POST, it means that the user submitted the form.
     # So the browser is sending the filled form data to the server.
@@ -35,7 +34,6 @@ def author_create(request):
         form = AuthorForm(request.POST)
 
         # Check if the submitted data is valid according to the Author model rules.
-        # For example: required fields must not be empty.
         if form.is_valid():
 
             # If the form is valid, save the new Author object to the database.
@@ -55,7 +53,6 @@ def author_create(request):
 
 def author_update(request, author_id):
     # Find the author we want to edit, using the id from the URL.
-    # If no author with this id exists, show 404 page.
     author = get_object_or_404(Author, id=author_id)
 
     # If the user submitted the form, we receive a POST request.
@@ -66,7 +63,6 @@ def author_update(request, author_id):
         # update this existing author, do not create a new one.
         form = AuthorForm(request.POST, instance=author)
 
-        # Check if the submitted data is valid.
         if form.is_valid():
 
             # Save the changes to the existing author in the database.
@@ -76,27 +72,19 @@ def author_update(request, author_id):
             return redirect("author_detail", author_id=author.id)
 
     else:
-        # If it is a GET request, the user just opened the edit page.
         # Create a form filled with the existing author's data.
         form = AuthorForm(instance=author)
 
-    # Render the same form template and pass the form to the HTML.
     return render(request, "core/author_form.html", {"form": form})
 
 def author_delete(request, author_id):
-    # Find the author we want to delete using the id from the URL.
-    # If the author does not exist, show 404 page.
     author = get_object_or_404(Author, id=author_id)
 
-    # If the request is POST, it means the user confirmed the deletion.
     if request.method == "POST":
-        # Delete the author from the database.
         author.delete()
 
-        # After deleting, redirect back to the authors list.
         return redirect("author_list")
 
-    # If the request is GET, show the confirmation page.
     return render(request, "core/author_confirm_delete.html", {"author": author})
 
 def book_list(request):

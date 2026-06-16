@@ -10,7 +10,6 @@ class AuthorForm(forms.ModelForm):
         #This form is for the Author model
         model = Author
 
-        #The fields we want to show in the form
         fields = ["first_name", "last_name", "birth_date", "description"]
 
 class BookForm(forms.ModelForm):
