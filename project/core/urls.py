@@ -4,6 +4,9 @@ from . import views
 #When someone visits authors/, execute the author_list view
 urlpatterns = [
     #Define path, execute view function and give the name to this route for easy use(elsewhere)
+
+    path("home/", views.home, name="home"),
+
     path("authors/", views.author_list, name="author_list"),
     path("authors/create/", views.author_create, name="author_create"),
     path("authors/<int:author_id>/", views.author_detail, name="author_detail"),

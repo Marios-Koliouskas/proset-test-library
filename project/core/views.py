@@ -7,6 +7,9 @@ from .forms import AuthorForm, BookForm, CategoryForm
 
 # Create your views here.
 
+def home(request):
+    return render(request, "core\home.html")
+
 #A python function thats being called when someone opens the specific url
 #The request is the request of the user/browser
 def author_list(request):
