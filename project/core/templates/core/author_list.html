@@ -1,23 +1,36 @@
 {% extends "core/base.html" %}
 
+<!--1-->
+{% load static %}
+<!--1-->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/lists.css' %}">
+<!--1-->
+{% endblock %}
+
 {% block content %}
     <h1>Authors</h1>
 
     <p>
-        <a href="{% url 'author_create' %}">Create new author</a>
+        <a class="title" href="{% url 'author_create' %}">Create new author</a>
     </p>
     
-    <ul>
+    <ul class="author-list">
 
         
         {% for author in authors %}
             
-            <li>
+            <li class="author_item">
 
                 <!--Makes dynamic links, so everytime we click an author, we go to a specific details page-->
-                <a href="{% url 'author_detail' author.id %}">
+                <a class="author_name" href="{% url 'author_detail' author.id %}">
                     {{ author.last_name }} {{ author.first_name }}
                 </a>
+
+                <p>Books count: {{author.book_count}}</p>
+                <p>Max price: {{author.max_book_price}}</p>
+                <p>Min price: {{author.min_book_price}}</p>
+                <p>Average price: {{author.avg_book_price|floatformat:2}}</p>
             </li>
         
         {% empty %}

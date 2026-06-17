@@ -1,0 +1,23 @@
+.title,
+.author_name {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: inline-block;
+}
+
+.author-list {
+    margin-top: 25px;
+}
+
+.title:hover {
+    background-color: blue;
+    color: white;
+}
+
+.author_name:hover{
+    background-color: purple;
+    color:white;
+}

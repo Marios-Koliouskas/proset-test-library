@@ -5,6 +5,8 @@ from .models import Author, Book, Category
 
 from .forms import AuthorForm, BookForm, CategoryForm
 
+from django.db.models import Count, Min, Max, Avg
+
 # Create your views here.
 
 def home(request):
@@ -14,7 +16,12 @@ def home(request):
 #The request is the request of the user/browser
 def author_list(request):
     
-    authors = Author.objects.all().order_by("-id")
+    authors = Author.objects.annotate(
+        book_count=Count("book"),
+        min_book_price=Min("book__price"),
+        max_book_price=Max("book__price"),
+        avg_book_price=Avg("book__price"),
+    ).order_by("-id")
     
     return render(request, "core/author_list.html", {"authors": authors})
     

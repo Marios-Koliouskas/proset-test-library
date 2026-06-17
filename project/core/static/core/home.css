@@ -1,8 +1,8 @@
-body{
+body {
     margin: 0;
 }
 
-.navbar{
+.navbar {
     display: flex;
     gap: 30px;
     padding-left: 30px;
@@ -17,14 +17,20 @@ body{
     width: fit-content;
 }
 
-.navbar a{
-    text-decoration: none;
-    color: black;
+.navbar li {
+    cursor: pointer;
 }
 
-.navbar li{
+.navbar a {
+    display: block;
+    text-decoration: none;
+    color: black;
     border: 1px solid black;
     padding: 10px;
     border-radius: 10px;
-    cursor: pointer;
+}
+
+.navbar a:hover {
+    background-color: black;
+    color: white;
 }
