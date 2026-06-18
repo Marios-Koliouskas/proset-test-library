@@ -31,6 +31,21 @@
                 <p>Max price: {{author.max_book_price}}</p>
                 <p>Min price: {{author.min_book_price}}</p>
                 <p>Average price: {{author.avg_book_price|floatformat:2}}</p>
+
+                <h3>Books:</h3>
+
+                <ul class="author-books">
+                    {% for book in author.book_set.all %}
+                    <li>
+                        <strong>Title: </strong>{{book.title}} ||
+                        <strong>Category: </strong>{{book.category}} ||
+                        <strong>Published: </strong>{{book.pub_date}} ||
+                        <strong>Price: </strong>{{book.price}}
+                    </li>
+                    {% empty %}
+                    <li>No books found</li>
+                    {% endfor %}
+                </ul>
             </li>
         
         {% empty %}

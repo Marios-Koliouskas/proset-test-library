@@ -1,20 +1,28 @@
 {% extends "core/base.html" %}
 
+<!--1-->
+{% load static %}
+<!--1-->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/lists1.css' %}">
+<!--1-->
+{% endblock %}
+
 {% block content %}
 
 
     <h1>Books</h1>
     <p>
-        <a href="{% url 'book_create' %}">Create new book</a>
+        <a class="create" href="{% url 'book_create' %}">Create new book</a>
     </p>
 
     <ul>
         {% for book in books %}
-        <li>Title:<a href="{% url 'book_detail' book.id %}"> {{book.title}} </a>|| 
-            Author: {{book.author}} || 
-            Published: {{book.pub_date}} || 
-            Price: {{book.price}} || 
-            Category: {{book.category}} || 
+        <li class="list-item"><strong>Title:</strong><a class="title1" href="{% url 'book_detail' book.id %}"> {{book.title}} </a>|| 
+            <strong>Author:</strong> {{book.author}} || 
+            <strong>Published:</strong> {{book.pub_date}} || 
+            <strong>Price:</strong> {{book.price}} || 
+            <strong>Category:</strong> {{book.category}} 
         </li>
         {%empty%}
         <li>No books found</li>

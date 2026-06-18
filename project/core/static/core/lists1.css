@@ -1,0 +1,25 @@
+.title1,
+.create{
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.list-item{
+    padding: 15px;
+}
+
+.title1:hover{
+    background-color: purple;
+    color:white;
+    cursor: pointer;
+}
+
+.create:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

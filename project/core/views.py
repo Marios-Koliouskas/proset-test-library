@@ -21,7 +21,7 @@ def author_list(request):
         min_book_price=Min("book__price"),
         max_book_price=Max("book__price"),
         avg_book_price=Avg("book__price"),
-    ).order_by("-id")
+    ).prefetch_related("book_set__category").order_by("-id")
     
     return render(request, "core/author_list.html", {"authors": authors})
     
@@ -95,7 +95,7 @@ def author_delete(request, author_id):
     return render(request, "core/author_confirm_delete.html", {"author": author})
 
 def book_list(request):
-    books = Book.objects.all().order_by("-id")
+    books = Book.objects.select_related("author", "category").order_by("-id")
     return render(request, "core/book_list.html", {"books": books})
 
 def book_detail(request, book_id):

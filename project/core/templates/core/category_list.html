@@ -1,16 +1,24 @@
 {% extends "core/base.html" %}
 
+<!--1-->
+{% load static %}
+<!--1-->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/lists1.css' %}">
+<!--1-->
+{% endblock %}
+
 {% block content %}
     
     <h1>Categories</h1>
 
     <p>
-        <a href="{% url 'category_create' %}">Create new category</a>
+        <a class="create" href="{% url 'category_create' %}">Create new category</a>
     </p>
     <ul>
         {% for category in categories %}
-            <li>Name: <a href="{% url 'category_detail' category.id %}"> {{category.name}} </a>|| 
-                Description: {{category.description}}
+            <li class="list-item"><strong>Name:</strong> <a class="title1" href="{% url 'category_detail' category.id %}"> {{category.name}} </a>|| 
+                <strong>Description:</strong> {{category.description}}
             </li>
         {%empty%}
             <li>No categories found</li>
