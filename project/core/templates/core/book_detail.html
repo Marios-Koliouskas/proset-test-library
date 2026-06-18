@@ -1,8 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'core\details.css' %}">
     <title>Book details</title>
 </head>
 <body>
@@ -20,16 +24,18 @@
     <p><strong>Updated at: </strong>{{book.updated_at}}</p>
 
 
-    <p>
-        <a href="{% url 'book_update' book.id%}">Edit book</a>
-    </p>
+    <div class="buttons">
+        <p>
+            <a class="edit-button" href="{% url 'book_update' book.id%}">Edit book</a>
+        </p>
 
-    <p>
-        <a href="{% url 'book_delete' book.id%}">Delete book</a>
-    </p>
+        <p>
+            <a class="delete-button" href="{% url 'book_delete' book.id%}">Delete book</a>
+        </p>
     
-    <p>
-        <a href="{% url 'book_list' %}">Back to books</a>
-    </p>
+        <p>
+            <a class="back-button" href="{% url 'book_list' %}">Back to books</a>
+        </p>
+    </div>
 </body>
 </html>

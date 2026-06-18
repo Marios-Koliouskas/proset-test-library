@@ -9,7 +9,23 @@
 }
 
 .author-list {
-    margin-top: 25px;
+    max-width: 900px;
+    margin: 25px auto;
+    list-style-type: none;
+}
+
+.author_item {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.header {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 30px;
 }
 
 .title:hover {

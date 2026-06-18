@@ -1,0 +1,32 @@
+.edit-button,
+.delete-button,
+.back-button{
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.edit-button:hover{
+    cursor: pointer;
+    background-color: brown;
+    color: white;
+}
+
+.delete-button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.back-button:hover{
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}

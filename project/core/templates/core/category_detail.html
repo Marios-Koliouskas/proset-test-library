@@ -1,8 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/details.css' %}">
     <title>Category details</title>
 </head>
 <body>
@@ -15,20 +18,19 @@
     <p><strong>Created at: </strong>{{category.created_at}}</p>
     <p><strong>Updated at: </strong>{{category.updated_at}}</p>
 
-    <p>
-        <a href="{% url 'category_update' category.id %}">Edit category
-        </a>
-    </p>
+    <div class="buttons">
+        <p>
+            <a class="edit-button" href="{% url 'category_update' category.id %}">Edit category</a>
+        </p>
 
-    <p>
-        <a href="{% url 'category_delete' category.id%}">Delete category
-        </a>
-    </p>
+        <p>
+            <a class="delete-button" href="{% url 'category_delete' category.id%}">Delete category</a>
+        </p>
 
-    <p>
-        <a href="{% url 'category_list' %}"> Back to category list
-        </a>
-    </p>
-    
+        <p>
+            <a class="back-button" href="{% url 'category_list' %}"> Back to category list</a>
+        </p>
+    </div>
+
 </body>
 </html>
